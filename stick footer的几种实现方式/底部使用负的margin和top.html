@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>stick footer的几种实现方式</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <style type="text/css">
+    html,
+    body {
+        height: 100%;
+        margin: 0;
+    }
+    
+    .content {
+        min-height: 100%;
+        background: #333;
+    }
+    
+    .content-inside {
+        padding: 20px;
+        padding-bottom: 50px;
+        background: YELLOW;
+    }
+    
+    .footer {
+        height: 50px;
+        margin-top: -50px;
+        background: RED;
+    }
+    </style>
+</head>
+
+<body>
+
+    <body>
+        <div class="content">
+            <div class="content-inside">
+                content
+                <H2>底部使用负的margin top</H2>
+                <p>aa</p>
+                <p>bbb</p>
+                <p>vvv</p>
+                <p>dddd</p>
+                <p>eee</p>
+                注：以上两种方式都会增加新的元素
+            </div>
+        </div>
+        <footer class="footer"></footer>
+    </body>
+</body>
+
+</html>
