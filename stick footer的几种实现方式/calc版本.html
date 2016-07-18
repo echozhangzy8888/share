@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>结合vh单位，calc 版本</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <style type="text/css">
+    html,
+    body {
+        padding: 0;
+        margin: 0;
+    }
+    
+    .content {
+        min-height: calc(100vh - 50px);
+        background: #333;
+    }
+    .content p{ 
+         /*字体大小为窗口的10%*/
+        font-size: 5vw;
+        color：#
+    }
+    
+    .footer {
+        height: 50px;
+        background: red;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="content">
+        content
+        <h2>结合vh单位，calc 版本</h2>
+        <p>aaa</p>
+        <p>bbb</p> <p>aaa</p>
+        <p>bbb</p> <p>aaa</p>
+        <p>bbb</p> <p>aaa</p>
+        <p>bbb</p> <p>aaa</p>
+        <p>bbb</p> <p>aaa</p>
+        <p>bbb</p> <p>aaa</p>
+        <p>bbb</p> <p>aaa</p>
+        <p>bbb</p> <p>aaa</p>
+        <p>bbb</p>   <p>bbb</p>   <p>zzz2</p>   <p>zzz</p>
+calc中的 70px，和50px是假定了content中最后一个元素有个20px的margin bottom，你不必在意这些~
+    </div>
+    <footer class="footer"></footer>
+</body>
+
+</html>
