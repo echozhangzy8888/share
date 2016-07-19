@@ -14,7 +14,7 @@ module.exports = {
       { test: /\.css$/, loader: ExtractTextPlugin.extract('style-loader', 'css-loader') },
       { test: /\.png$/, loader: 'file-loader' },
       { test: /\.html$/, loader: 'html-loader' },
-      { test: /\.ejs$/, loader: 'ejs-loader?variable=data' }
+      {test: /\.ejs$/, loader: 'ejs-compiled?htmlmin'} 
     ]
   },
   plugins: [
@@ -32,7 +32,7 @@ module.exports = {
       title:'test',
       filename: 'test.html',
       favicon: 'favicon.ico',
-      template: 'ejs!test.ejs'
+      template: 'test.ejs'
     }),
     new ExtractTextPlugin('styles.css')
   ]
