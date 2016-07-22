@@ -1,0 +1,116 @@
+// Animation
+$period: 2s;
+$bar-rotation: -8deg;
+$bar-rotation-origin: -40deg;
+
+*,
+*::after, *::before {
+    box-sizing: border-box;
+    // opacity: 0.8;
+}
+html,body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+body {
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  background-color: #f2f3f4;
+}
+.dish-wrapper {
+    width: 10em;
+    height: 10em;
+    position: relative;
+    font-size: 20px;
+    .dish {
+        width: 10em;
+        height: 10em;
+        position: relative;
+        &-pot {
+            width: 4em;
+            height: 4em;
+            z-index: 10;
+
+            background-size: contain;
+            background-position: center;
+            background-image: url(../imgs/dishpot.png) ;
+
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+        &-cd {
+            width: 10em;
+            height: 10em;
+      position: absolute;
+      left: 0;
+      top: 0;
+            background-size: contain;
+            background-position: center;
+            background-image: url(../imgs/cd.png) ;
+            animation: rotate $period * 5 forwards linear infinite;
+
+        }
+        &-cd-shadow {
+            width: 10em;
+            height: 10em;
+
+            border-radius: 100%;
+            top: 0;
+            left: 0;
+            position: absolute;
+            box-shadow: 0px 0.3em 0.3em #666;
+        }
+    }
+    .dish-bar {
+        width: 4.5em;
+        height: 9em;
+        position: absolute;
+        top: -4em;
+        left: 50%;
+        margin-left: -1em;
+       transform-origin: 0.9em 1em;
+        transform: rotate($bar-rotation-origin);
+
+        background-size: contain;
+        background-position: center;
+        background-image: url(../imgs/bar.png) ;
+
+        animation: bar 0.5s 0.3s forwards linear;
+    }
+
+    &:hover {
+        .dish-bar {
+            animation: barReverse 0.2s forwards linear ;
+        }
+    }
+}
+@keyframes barReverse {
+    0% {
+        transform: rotate($bar-rotation);
+    }
+    100% {
+        transform: rotate($bar-rotation-origin);
+    }
+}
+@keyframes bar {
+    0% {
+        transform: rotate($bar-rotation-origin);
+    }
+    100% {
+        transform: rotate($bar-rotation);
+    }
+}
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}

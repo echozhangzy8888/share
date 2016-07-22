@@ -1,0 +1,42 @@
+{
+  "name": "cdmusic",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "scss": "node-sass --output-style compressed -o dist/css src/scss",
+    "autoprefixer": "postcss -u autoprefixer -r dist/css/*",
+    "lint": "eslint src/js",
+    "serve": "browser-sync start --server --files 'dist/css/*.css, dist/js/*.js'",
+    "imagemin": "imagemin src/images dist/images -p",
+    "icons": "svgo -f src/images/icons && mkdir -p dist/images && svg-sprite-generate -d src/images/icons -o dist/images/icons.svg",
+    "uglify": "mkdir -p dist/js &amp;&amp; uglifyjs src/js/*.js -m -o dist/js/app.js &amp;&amp; uglifyjs src/js/*.js -m -c -o dist/js/app.min.js",
+    "build:css": "npm run scss && npm run autoprefixer",
+    "build:js": "npm run lint &amp;&amp; npm run uglify",
+    "build:images": "npm run imagemin && npm run icons",
+    "build:all": "npm run build:css && npm run build:js && npm run build:images",
+    "watch:css": "onchange 'src/scss/*.scss' -- npm run build:css",
+    "watch:js": "onchange 'src/js/*.js' -- npm run build:js",
+    "watch:all": "parallelshell 'npm run serve' 'npm run watch:css' 'npm run watch:js'",
+    "postinstall": "npm run watch:all"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "autoprefixer": "^6.3.7",
+    "browser-sync": "^2.13.0",
+    "eslint": "^3.1.1",
+    "gulp-postcss": "^6.1.1",
+    "imagemin-cli": "^3.0.0",
+    "node-sass": "^3.8.0",
+    "onchange": "^2.5.0",
+    "parallelshell": "^2.0.0",
+    "postcss-cli": "^2.5.2",
+    "svg-sprite-generator": "0.0.7",
+    "svgo": "^0.6.6",
+    "uglify-js": "^2.7.0"
+  },
+  "dependencies": {
+    "imagemin-cli": "^3.0.0"
+  }
+}
