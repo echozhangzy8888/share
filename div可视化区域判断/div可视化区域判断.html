@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="applicable-device" content="mobile">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta content="telephone=no" name="format-detection">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" media="all" href="test.css">
+    <script src="http://cdn.bootcss.com/zepto/1.2.0/zepto.js"></script>
+</head>
+
+<body>
+  <div id="board"></div>
+  <section></section>
+</body>
+<script type="text/javascript">
+    var section = document.getElementsByTagName("section")[0]
+    var window_h =   window.screen.height;
+    console.log(window_h);
+
+    for (var i = 0; i <6; i++) {
+        var newNode = document.createElement("div");
+        newNode.setAttribute("data-order",i+1); 
+        section.appendChild(newNode);
+
+    }
+
+     document.addEventListener("scroll", myFunction);
+      myFunction();
+
+     function myFunction() {
+        var scrollTopValue = document.body.scrollTop;
+
+        document.getElementById("board").innerHTML = "滚动监听事件,scrollTop:" + scrollTopValue;
+        document.getElementById("board").style.top = scrollTopValue +"px";
+        $("section div").each(function (i,eme) {
+
+          var offsetTop = $(this).offset().top;
+          var elemHeight = $(this).height();
+
+            if ( offsetTop < (scrollTopValue+window_h) && offsetTop+elemHeight > scrollTopValue) {
+               $(this).css("font-size","33px")
+             }else{
+               $(this).css("font-size","12px")
+             }
+
+        })
+
+     }
+      
+    // var nodeli = document.createElement('li'); 
+    // var li_text = document.createTextNode('蓝天'); 
+    // nodeli.appendChild(li_text); 
+
+
+</script>
+
+</html>
